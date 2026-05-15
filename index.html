@@ -34,7 +34,7 @@
         }
 
         .logo-png {
-            width: 50%; /*200px; Tasarımınıza göre bu değeri 300-350 arası değiştirebilirsiniz */
+            width: 60%; /*200px; Tasarımınıza göre bu değeri 300-350 arası değiştirebilirsiniz */
             max-width: 100%;
             height: auto;
             display: block;
@@ -268,12 +268,12 @@ function searchExam() {
 
                     <div style="display: flex; justify-content: space-around; margin: 0 20px 20px 20px; padding: 10px; background: #f8fafc; border-radius: 8px;">
                         <div>
-                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">SINAV TARİH / EXAM DATE</small>
+                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">TARİH / DATE</small>
                             <span style="font-weight: 600; color: #2d3748;">${sinavTarihi}</span>
                         </div>
                         <div style="border-left: 1px solid #e2e8f0;"></div>
                         <div>
-                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">SINAV SAAT / EXAM TIME</small>
+                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">SAAT / TIME</small>
                             <span style="font-weight: 600; color: #2d3748;">${sinavSaati}</span>
                         </div>
                     </div>
@@ -287,7 +287,8 @@ function searchExam() {
                         <div style="background: #fff5f5; padding: 20px; border-radius: 12px; border: 2px solid #feb2b2;">
                             <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px;">SINAV SALONU / EXAM HALL</small>
                             <div style="font-size: 2.2rem; font-weight: 900; color: #c53030; margin-bottom: 5px;">${student.Derslik || '-'}</div>
-                            <div style="font-size: 1rem; color: #4a5568; font-weight: 600;">${student.Fakulte || '-'}</div>
+ <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px;">FAKÜLTE / FACULTY</small>                           
+ <div style="font-size: 1rem; color: #4a5568; font-weight: 600;">${student.Fakulte || '-'}</div>
                         </div>
                     </div>
 
