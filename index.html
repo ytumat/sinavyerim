@@ -7,46 +7,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <style>
         body { 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    display: flex; 
-    justify-content: center; 
-    align-items: flex-start;
-    padding-top: 30px; /* 50px'den 30px'e düşürüldü */
-    background: #f4f7f6; 
-    margin: 0;
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            padding-top: 30px;
+            background: #f4f7f6; 
+            margin: 0;
+        }
 
-.container {
-    background: #ffffff;
-    padding: 30px 40px; /* Üst-alt padding 40'tan 30'a çekildi */
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    max-width: 450px;
-    width: 90%;
-    text-align: center;
-}
+        .container {
+            background: #ffffff;
+            padding: 20px 40px 40px 40px; /* Üst padding logonun kendi payı için azaltıldı */
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+        }
 
-h2 {
-    font-weight: 700;
-    color: #1a202c;
-    margin-top: 5px; /* Üstten ekstra boşluğu önlemek için eklendi */
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    line-height: 1.2;
-}
+        /* Logo Alanı Tasarımı */
+        .logo-kapsayici {
+            margin-bottom: 25px;
+            display: inline-block;
+            text-align: center;
+        }
 
-        .en-title {
+        .logo-png {
+            width: 50%; /*200px; Tasarımınıza göre bu değeri 300-350 arası değiştirebilirsiniz */
+            max-width: 100%;
+            height: auto;
             display: block;
-            font-size: 1rem;
-            color: #718096;
-            font-weight: 400;
-            margin-top: 5px;
+            margin: 0 auto;
         }
 
         label {
             display: block;
             text-align: left;
-            font-size: 12px;
+            font-size: 11px; /* Biraz daha küçültülerek modern bir hava verildi */
             font-weight: 700;
             color: #4a5568;
             margin-bottom: 8px;
@@ -57,7 +55,7 @@ h2 {
 
         .en-label {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             color: #a0aec0;
             font-weight: 500;
             text-transform: none;
@@ -78,7 +76,7 @@ h2 {
         }
 
         select:focus, input:focus {
-            border-color: #4299e1;
+            border-color: #3182ce;
             background-color: #fff;
             box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
         }
@@ -95,6 +93,7 @@ h2 {
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+            margin-top: 5px;
         }
 
         button:hover {
@@ -104,17 +103,18 @@ h2 {
 
         #result {
             margin-top: 25px;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 0; 
+            border-radius: 20px;
             display: none;
             text-align: left;
             transition: all 0.3s ease;
+            animation: slideUp 0.4s ease-out;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .basarili {
             background: #ffffff;
-            border-left: 6px solid #1a73e8;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .hata {
@@ -123,48 +123,80 @@ h2 {
             color: #c53030;
             text-align: center;
             font-size: 14px;
+            padding: 20px;
         }
 
-/* Sonuç kutusunun genel animasyonu */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+
+
+label {
+    display: block;
+    text-align: left;
+    font-size: 10.5px; /* Daha kompakt ve şık */
+    font-weight: 800; /* Daha vurgulu */
+    color: #2d3748; /* Biraz daha koyu, net okunur */
+    margin-bottom: 10px;
+    margin-left: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px; /* Harfler nefes alsın */
 }
 
-.basarili {
-    background: #ffffff;
-    border: none !important;
-    border-radius: 20px !important;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
-    animation: slideUp 0.4s ease-out;
-    overflow: hidden;
-    padding: 0 !important; /* İç padding'i elementlere dağıtacağız */
+.en-label {
+    display: block;
+    font-size: 9.5px;
+    color: #a0aec0;
+    font-weight: 600;
+    text-transform: uppercase; /* İngilizceyi de büyük yapıp inceltmek daha şık durur */
+    letter-spacing: 0.8px;
+    margin-top: 2px;
+}
+
+select, input {
+    width: 100%;
+    padding: 15px 18px;
+    margin-bottom: 25px;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500; /* Yazılan numaralar daha tok dursun */
+    color: #1a202c;
+    background-color: #f8fafc;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%); /* Daha derin bir mavi */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Şık görünümün sırrı burada */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(26, 54, 93, 0.2);
 }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div style="margin-bottom: 35px; text-align: center;">
-    <!-- Logo Alanı -->
-    <div style="display: inline-block; position: relative;">
-        <h1 style="margin: 0; font-size: 2.5rem; font-weight: 900; letter-spacing: -1.5px; color: #1a202c;">
-            <span style="color: #3182ce;">MAT</span>yer
-        </h1>
-        <!-- Alt Çizgi Detayı (Mühendislik cetveli gibi) -->
-        <div style="height: 4px; width: 40px; background: #3182ce; margin: 0 auto; border-radius: 2px;"></div>
+    <!-- Yeni Eklenen Logo Alanı -->
+    <div class="logo-kapsayici">
+        <img src="logo.png" alt="MATyer Logo" class="logo-png">
     </div>
-    
-    <!-- Alt Başlık -->
-    <div style="margin-top: 10px;">
-        <span style="display: block; font-size: 1rem; font-weight: 600; color: #4a5568; text-transform: uppercase; letter-spacing: 1px;">
-            Sınav Yeri Sorgulama
-        </span>
-        <span style="display: block; font-size: 0.85rem; color: #a0aec0; font-weight: 400;">
-            Exam Location Inquiry
-        </span>
-    </div>
-</div>
     
     <label for="courseSelect">
         SINAVINA GİRECEĞİNİZ TEMEL DERS
@@ -180,7 +212,7 @@ h2 {
         ÖĞRENCİ NUMARANIZ
         <span class="en-label">STUDENT ID NUMBER</span>
     </label>
-    <input type="text" id="studentId" autocomplete="off">
+    <input type="text" id="studentId" placeholder="Örn: 23012345" autocomplete="off">
     
     <button onclick="searchExam()">SORGULA / SEARCH</button>
 
@@ -215,12 +247,10 @@ function searchExam() {
                 return yeniObj;
             });
 
-            // Sabit bilgileri (Tarih/Saat) ilk satırdan alıyoruz
             const genelBilgi = temizListe[0] || {};
             const sinavTarihi = genelBilgi.Tarih || '-';
             const sinavSaati = genelBilgi.Saat || '-';
 
-            // Öğrenciyi bul
             const student = temizListe.find(o => String(o.No).trim() === no);
 
             sonucDiv.style.display = "block";
@@ -228,19 +258,15 @@ function searchExam() {
             if (student) {
                 sonucDiv.className = "basarili";
                 const tamAd = `${student.Ad || ''} ${student.Soyad || ''}`;
-                
-                // Kod ve Ders sütunlarını birleştiriyoruz (Örn: MAT1072 Matematik 2)
                 const birlesikDersAdi = `${student.Kod || ''} ${student.Ders || ''}`.trim();
                 
                 sonucDiv.innerHTML = `
-                    <!-- Üst Bölüm: Hitap -->
-                    <div style="text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
+                    <div style="text-align: center; border-bottom: 1px solid #eee; padding: 20px 10px 10px 10px; margin-bottom: 20px;">
                         <span style="font-size: 1.1rem; color: #2c3e50;">Sayın / Dear</span><br>
                         <strong style="font-size: 1.4rem; color: #1a73e8; text-transform: uppercase;">${tamAd}</strong>
                     </div>
 
-                    <!-- Zaman Bilgisi -->
-                    <div style="display: flex; justify-content: space-around; margin-bottom: 20px; padding: 10px; background: #f8fafc; border-radius: 8px;">
+                    <div style="display: flex; justify-content: space-around; margin: 0 20px 20px 20px; padding: 10px; background: #f8fafc; border-radius: 8px;">
                         <div>
                             <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">SINAV TARİH / EXAM DATE</small>
                             <span style="font-weight: 600; color: #2d3748;">${sinavTarihi}</span>
@@ -252,8 +278,7 @@ function searchExam() {
                         </div>
                     </div>
 
-                    <!-- Ana Bilgi Alanı: Birleşik Ders Adı ve Salon -->
-                    <div style="margin-bottom: 20px; text-align: center;">
+                    <div style="margin: 0 20px 20px 20px; text-align: center;">
                         <small style="color: #7f8c8d; display: block; font-size: 11px; margin-bottom: 5px; font-weight: bold;">DERS / COURSE</small>
                         <div style="font-size: 1.1rem; font-weight: 700; color: #2d3748; margin-bottom: 15px; line-height: 1.3;">
                             ${birlesikDersAdi}
@@ -266,8 +291,7 @@ function searchExam() {
                         </div>
                     </div>
 
-                    <!-- Uyarı Kısmı -->
-                    <div style="border-top: 1px solid #edf2f7; pt: 15px; margin-top: 20px; color: #4a5568; font-size: 13px; line-height: 1.6;">
+                    <div style="border-top: 1px solid #edf2f7; padding: 15px 20px; color: #4a5568; font-size: 13px; line-height: 1.6;">
                         <div style="padding: 12px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f6ad55;">
                             <p style="margin: 0; font-weight: 600; color: #7b341e;">HATIRLATMA / REMINDER:</p>
                             <p style="margin: 4px 0 0 0;">Sınav saatinden en az 15 dakika önce öğrenci kimliğinizle birlikte ilgili salonda hazır bulununuz.</p>
