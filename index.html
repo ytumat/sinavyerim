@@ -172,7 +172,6 @@ function searchExam() {
         complete: function(results) {
             const liste = results.data;
             
-            // Başlık temizliği
             const temizListe = liste.map(item => {
                 const yeniObj = {};
                 for (let key in item) {
@@ -181,11 +180,10 @@ function searchExam() {
                 return yeniObj;
             });
 
-            // TARİH ve SAAT bilgisini listenin İLK SATIRINDAN alıyoruz
-            // Böylece tüm satırlara yazmanıza gerek kalmaz, sadece ilk satırda olması yeterli
-            const genelBilgi = temizListe[0];
-            const sinavTarihi = genelBilgi.Tarih || 'Belirtilmedi';
-            const sinavSaati = genelBilgi.Saat || 'Belirtilmedi';
+            // Sabit bilgileri (Tarih/Saat) ilk satırdan alıyoruz
+            const genelBilgi = temizListe[0] || {};
+            const sinavTarihi = genelBilgi.Tarih || '-';
+            const sinavSaati = genelBilgi.Saat || '-';
 
             const student = temizListe.find(o => String(o.No).trim() === no);
 
@@ -196,45 +194,60 @@ function searchExam() {
                 const tamAd = `${student.Ad || ''} ${student.Soyad || ''}`;
                 
                 sonucDiv.innerHTML = `
-                    <!-- Ders ve Öğrenci Adı -->
+                    <!-- Üst Bölüm: Hitap -->
                     <div style="text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
-                        <span style="font-size: 0.85rem; color: #718096; text-transform: uppercase; letter-spacing: 1px;">${dersAdi}</span><br>
-                        <strong style="font-size: 1.3rem; color: #1a73e8; text-transform: uppercase;">${tamAd}</strong>
+                        <span style="font-size: 1.1rem; color: #2c3e50;">Sayın / Dear</span><br>
+                        <strong style="font-size: 1.4rem; color: #1a73e8; text-transform: uppercase;">${tamAd}</strong>
                     </div>
 
-                    <!-- Ortak Tarih ve Saat Alanı (İlk satırdan çekildi) -->
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px; background: #ebf8ff; padding: 12px; border-radius: 10px; border: 1px solid #bee3f8;">
-                        <div style="text-align: left;">
-                            <small style="color: #2b6cb0; display: block; font-size: 10px; font-weight: bold;">TARİH / DATE</small>
-                            <span style="font-weight: 700; color: #2c5282;">${sinavTarihi}</span>
+                    <!-- Orta Bölüm: Ders ve Zaman Bilgisi -->
+                    <div style="margin-bottom: 15px; text-align: center; background: #f8fafc; padding: 10px; border-radius: 8px;">
+                        <div style="margin-bottom: 8px;">
+                            <small style="color: #7f8c8d; display: block; font-size: 10px;">DERS / COURSE</small>
+                            <span style="font-weight: 700; color: #2d3748; font-size: 1.1rem;">${dersAdi}</span>
                         </div>
-                        <div style="text-align: right;">
-                            <small style="color: #2b6cb0; display: block; font-size: 10px; font-weight: bold;">SAAT / TIME</small>
-                            <span style="font-weight: 700; color: #2c5282;">${sinavSaati}</span>
+                        <div style="display: flex; justify-content: space-around; border-top: 1px solid #e2e8f0; pt: 8px; margin-top: 8px;">
+                            <div>
+                                <small style="color: #7f8c8d; display: block; font-size: 10px;">TARİH / DATE</small>
+                                <span style="font-weight: 600; color: #2d3748;">${sinavTarihi}</span>
+                            </div>
+                            <div>
+                                <small style="color: #7f8c8d; display: block; font-size: 10px;">SAAT / TIME</small>
+                                <span style="font-weight: 600; color: #2d3748;">${sinavSaati}</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Alt Bölüm: Yer Bilgisi -->
                     <div style="margin-bottom: 15px;">
                         <small style="color: #7f8c8d; display: block; margin-bottom: 4px;">FAKÜLTE / FACULTY</small>
-                        <span style="font-size: 1rem; font-weight: 600; color: #34495e;">${student.Fakulte || '-'}</span>
+                        <span style="font-size: 1.1rem; font-weight: 600; color: #34495e;">${student.Fakulte || '-'}</span>
                     </div>
 
                     <div style="margin-bottom: 20px;">
                         <small style="color: #7f8c8d; display: block; margin-bottom: 4px;">SINAV SALONU / EXAM HALL</small>
-                        <span style="font-size: 1.5rem; font-weight: 800; color: #e74c3c;">${student.Derslik || '-'}</span>
+                        <span style="font-size: 1.3rem; font-weight: 800; color: #e74c3c;">${student.Derslik || '-'}</span>
                     </div>
 
-                    <div style="border-top: 1px solid #edf2f7; padding-top: 15px; color: #4a5568; font-size: 13px;">
-                        <p style="margin: 0;">Lütfen sınavdan 15 dk. önce kimliğinizle hazır bulununuz.</p>
+                    <!-- Uyarı Kısmı (Türkçe ve İngilizce Korundu) -->
+                    <div style="border-top: 1px solid #edf2f7; pt: 15px; margin-top: 15px; color: #4a5568; font-size: 13px; line-height: 1.6;">
+                        <div style="margin-bottom: 10px; padding: 10px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f6ad55;">
+                            <p style="margin: 0; font-weight: 600; color: #7b341e;">HATIRLATMA / REMINDER:</p>
+                            <p style="margin: 4px 0 0 0;">Sınav saatinden en az 15 dakika önce öğrenci kimliğinizle birlikte ilgili salonda hazır bulununuz.</p>
+                            <p style="margin: 4px 0 0 0; color: #a0aec0; font-style: italic; font-size: 12px;">Please be present in the relevant hall at least 15 minutes before the exam with your student ID.</p>
+                        </div>
                     </div>
                 `;
             } else {
                 sonucDiv.className = "hata";
-                sonucDiv.innerHTML = `<strong>Kayıt bulunamadı.</strong><br>Öğrenci numarası sistemde kayıtlı değil.`;
+                sonucDiv.innerHTML = `
+                    <strong>Kayıt bulunamadı. / Record not found.</strong><br>
+                    Lütfen numaranızı ve dersi kontrol ediniz.
+                `;
             }
         },
         error: function() {
-            alert("Dosya yüklenemedi.");
+            alert("Dosya yüklenemedi / Failed to load file.");
         }
     });
 }
