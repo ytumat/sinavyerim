@@ -322,7 +322,7 @@
         ÖĞRENCİ NUMARANIZ
         <span class="en-label">STUDENT ID NUMBER</span>
     </label>
-    <input type="text" id="studentId" autocomplete="off">
+    <input type="text" id="studentId" autocomplete="on">
     
     <button class="main-search-btn" onclick="searchExam()">SORGULA / SEARCH</button>
 
@@ -448,7 +448,7 @@ function searchExam() {
             <div style="font-size: 1rem; color: #4a5568; font-weight: 600; margin-bottom: 12px; line-height: 1.2;">${student.Fakulte || '-'}</div> 
             
             <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: -5px; letter-spacing: 1px;">SINAV SALONU / EXAM HALL</small>
-            <div style="font-size: 2.5rem; font-weight: 900; color: #c53030; line-height: 1; margin-top: 5px;">${student.Derslik || '-'}</div>
+            <div style="font-size: 2.3rem; font-weight: 900; color: #c53030; line-height: 1; margin-top: 5px;">${student.Derslik || '-'}</div>
         </div>
     </div>
 
