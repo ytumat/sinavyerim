@@ -405,10 +405,12 @@ function searchExam() {
     if (!dersKodu) { alert("Lütfen bir ders seçin / Please select a course"); return; }
     if (!no) { alert("Lütfen numaranızı girin / Please enter your student ID"); return; }
 
-    // Seçilen sınavın görünen adını metin olarak alıyoruz
-    const secilenSinavAdi = examSelect.options[examSelect.selectedIndex].text.split('/')[0].trim();
+    // Seçilen option metnini "/" işaretinden bölüp Türkçe ve İngilizce isimleri ayırıyoruz
+    const secilenMetin = examSelect.options[examSelect.selectedIndex].text;
+    const trSinavAdi = secilenMetin.split('/')[0].trim();
+    const enSinavAdi = secilenMetin.split('/')[1] ? secilenMetin.split('/')[1].trim() : '';
 
-    // Dosya adlandırma kuralı dinamikleşti: örn. matematik_arasinav1.csv
+    // Dosya yolu üretimi (Örn: matematik_arasinav1.csv)
     const dosyaYolu = `${dersKodu}_${examType}.csv?v=${new Date().getTime()}`;
 
     Papa.parse(dosyaYolu, {
@@ -466,11 +468,12 @@ function searchExam() {
             </div>
         </div>
 
-        <!-- YENİ: Sınav Adı Kutusu (Fakültenin hemen üstünde) -->
+        <!-- Güncellenen Sınav Adı Kutusu (Çift Dilli) -->
         <div style="background: #f7fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 15px;">
             <small style="color: #4a5568; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">SINAV / EXAM</small>
             <div style="font-size: 1.1rem; font-weight: 700; color: #4a5568; line-height: 1.3;">
-                ${secilenSinavAdi}
+                ${trSinavAdi}
+                ${enSinavAdi ? `<br><span style="font-size: 0.95rem; color: #a0aec0; font-weight: 600; font-style: italic;">${enSinavAdi}</span>` : ''}
             </div>
         </div>
 
@@ -493,7 +496,7 @@ function searchExam() {
 `;
             } else {
                 sonucDiv.className = "hata";
-                sonucDiv.innerHTML = `<strong>Kayıt bulunamadı. / Record not found.</strong><br>Lütfen numaranızı ve dersi kontrol ediniz.<br><small style="color: #718096; display:block; margin-top:5px;">Seçilen Sınav: ${secilenSinavAdi}</small>`;
+                sonucDiv.innerHTML = `<strong>Kayıt bulunamadı. / Record not found.</strong><br>Lütfen numaranızı ve dersi kontrol ediniz.<br><small style="color: #718096; display:block; margin-top:5px;">Sınav / Exam: ${trSinavAdi} (${enSinavAdi})</small>`;
             }
         },
         error: function() {
@@ -501,6 +504,8 @@ function searchExam() {
         }
     });
 }
+
+
 </script>
 <script data-goatcounter="https://matyer.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
