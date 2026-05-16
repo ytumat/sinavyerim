@@ -499,9 +499,8 @@ function searchExam() {
             const birlesikDersAdi = `${genelBilgi.Kod || ''} ${genelBilgi.Ders || ''}`.trim();
 
             sonucDiv.style.display = "block";
-            
-            // --- MOD 1: GENEL LİSTE MODU (Mazeret, Bütünleme, Mezuniyet) ---
-            // --- MOD 1: GENEL LİSTE MODU (Mazeret, Bütünleme, Mezuniyet) ---
+           
+           // --- MOD 1: GENEL LİSTE MODU (Mazeret, Bütünleme, Mezuniyet) ---
 if (isGeneralMode) {
     sonucDiv.className = "basarili";
 
@@ -531,8 +530,36 @@ if (isGeneralMode) {
         `;
     });
 
-    // Sizin hazırlayacağınız Google Forms, Microsoft Forms vb. linki
-    const formLinki = "https://forms.office.com/r/fpesHVAg1L"; 
+    // --- SINAV TÜRÜNE GÖRE DİNAMİK METİN AYARLAMA ---
+    let uyariMetniTR = "";
+    let uyariMetniEN = "";
+    let formLinki = "";
+
+    switch(examType) {
+        case "mazeret":
+            uyariMetniTR = `1. Mazeret sınavına sadece ilgili yönetim kurulu tarafından mazereti kabul edilen öğrenciler girebilir.<br>
+                            2. Soru kitapçığı israfını önlemek ve planlama yapmak adına sınava katılacaksanız lütfen formu doldurunuz.`;
+            uyariMetniEN = `1. Only students whose excuses are officially accepted by the steering committee can take the make-up exam.<br>
+                            2. Please fill out the form if you will attend, to help us prevent exam booklet waste.`;
+            formLinki = "https://forms.gle/MazeretFormLinki"; // Mazeret formu linkiniz
+            break;
+            
+        case "butunleme":
+            uyariMetniTR = `1. İlgili dersten harf notu <span style="background:#feebc8; padding:2px 4px; border-radius:4px; font-weight:700;">CC ve üzeri</span> olan öğrenciler bütünleme sınavına katılamazlar.<br>
+                            2. Basılacak soru kitapçığı sayısını belirlemek ve israfı önlemek adına sınava kesin katılacaksanız lütfen formu doldurunuz.`;
+            uyariMetniEN = `1. Students with a grade of CC or higher are not eligible for the resit exam.<br>
+                            2. To prevent booklet waste and assist with planning, please fill out the form if you will definitely attend.`;
+            formLinki = "https://forms.gle/ButunlemeFormLinki"; // Bütünleme formu linkiniz
+            break;
+            
+        case "mezuniyet":
+            uyariMetniTR = `1. Mezuniyet (üç ders) sınavına sadece ilgili dönemde başarısız dersi kalıp, bu sınavla mezun olabilecek durumda olan öğrenciler katılabilir.<br>
+                            2. Katılım durumunuzu bildirmek ve soru kitapçığı planlamasına yardımcı olmak için lütfen formu doldurunuz.`;
+            uyariMetniEN = `1. Only students who can graduate upon passing their remaining failed courses are eligible for the graduation exam.<br>
+                            2. Please fill out the form to confirm your attendance and help us estimate the number of booklets needed.`;
+            formLinki = "https://forms.gle/MezuniyetFormLinki"; // Mezuniyet formu linkiniz
+            break;
+    }
 
     sonucDiv.innerHTML = `
         <div style="text-align: center; border-bottom: 1px solid #eee; padding: 20px 10px 10px 10px; margin-bottom: 20px;">
@@ -540,25 +567,26 @@ if (isGeneralMode) {
             <span style="font-size: 0.95rem; color: #a0aec0; font-weight: 600; font-style: italic;">Exam Hall Information</span>
         </div>
 
-        <!-- YENİ: Katılım Bildirim ve Kurallar Kutusu -->
+        <!-- DİNAMİK UYARI VE KATILIM KUTUSU -->
         <div style="margin: 0 20px 20px 20px; background: #fffaf0; border: 2px solid #feebc8; padding: 15px; border-radius: 12px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-            <div style="color: #dd6b20; font-weight: 800; font-size: 12px; letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase;">
+            <div style="color: #dd6b20; font-weight: 800; font-size: 12px; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase;">
                 ⚠️ ÖNEMLİ BİLGİLENDİRME & KATILIM FORMU
             </div>
-            <p style="margin: 0 0 8px 0; font-size: 13px; color: #7b341e; line-height: 1.4; font-weight: 600;">
-                1. İlgili dersten harf notu <span style="background:#feebc8; padding:2px 4px; border-radius:4px;">CC ve üzeri</span> olan öğrenciler bütünleme sınavına katılamazlar.
-            </p>
-            <p style="margin: 0 0 15px 0; font-size: 13px; color: #2d3748; line-height: 1.4;">
-                2. Basılacak soru kitapçığı sayısını belirlemek ve israfı önlemek adına, sınava kesin olarak katılacaksanız lütfen aşağıdaki bildirim formunu doldurunuz:
-            </p>
             
-            <a href="${formLinki}" target="_blank" style="display: block; text-align: center; background: #dd6b20; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; letter-spacing: 1px; transition: background 0.2s;">
+            <!-- Türkçe Bilgilendirme -->
+            <div style="font-size: 13px; color: #2d3748; line-height: 1.5; margin-bottom: 12px;">
+                ${uyariMetniTR}
+            </div>
+            
+            <!-- İngilizce Bilgilendirme -->
+            <div style="font-size: 12px; color: #718096; line-height: 1.4; font-style: italic; border-top: 1px dashed #fbd38d; padding-top: 10px; margin-bottom: 15px;">
+                ${uyariMetniEN}
+            </div>
+            
+            <!-- Dinamik Buton -->
+            <a href="${formLinki}" target="_blank" style="display: block; text-align: center; background: #dd6b20; color: white; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; letter-spacing: 1px; transition: background 0.2s; text-transform: uppercase;">
                 SINAVA KATILACAĞIMI BİLDİR / CONFIRM ATTENDANCE
             </a>
-            
-            <small style="display:block; text-align:center; color:#a0aec0; font-style:italic; font-size:11px; margin-top:6px;">
-                Students with a grade of CC or higher are not eligible for the resit exam.
-            </small>
         </div>
 
         <div style="display: flex; justify-content: space-around; margin: 0 20px 20px 20px; padding: 10px; background: #f8fafc; border-radius: 8px;">
@@ -603,6 +631,8 @@ if (isGeneralMode) {
     `;
     return;
 }
+
+
 
             // --- MOD 2: BİREYSEL SORGULAMA MODU (Arasınavlar ve Final) ---
             const student = temizListe.find(o => String(o.No).trim() === no);
