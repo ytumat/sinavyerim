@@ -276,6 +276,25 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+
+
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(221, 107, 32, 0.4);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 4px 25px rgba(221, 107, 32, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(221, 107, 32, 0.4);
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -545,7 +564,7 @@ if (isGeneralMode) {
             break;
             
         case "butunleme":
-            uyariMetniTR = `1. İlgili dersten Final harf notu <span style="background:#feebc8; padding:2px 4px; border-radius:4px; font-weight:700;">CC veya üzeri</span> olan öğrenciler bütünleme sınavına katılamazlar.<br>
+            uyariMetniTR = `1. İlgili dersten Final harf notu <span style="background:#feebc8; padding:2px 4px; border-radius:4px; font-weight:700;">CC veya üzeri</span> olan öğrenciler bütünleme sınavına <span style="background:#feebc8; padding:2px 4px; border-radius:4px; font-weight:700;">katılamazlar</span>.<br>
                             2. Basılacak soru kitapçığı sayısını belirlemek ve israfı önlemek adına sınava kesin katılacaksanız lütfen formu doldurunuz.`;
             uyariMetniEN = `1. Students with a grade of CC or higher are not eligible for the resit exam.<br>
                             2. To prevent booklet waste and assist with planning, please fill out the form if you will definitely attend.`;
