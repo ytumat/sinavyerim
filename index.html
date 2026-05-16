@@ -79,7 +79,7 @@
             color: #4a5568;
             line-height: 1.6;
             margin: 20px 0;
-            max-height: 200px; /* Belirli bir yükseklik verdik ki aşağı kaydırma mecburiyeti oluşsun */
+            max-height: 200px; 
             overflow-y: auto;
             padding-right: 8px;
             border: 1px solid #edf2f7;
@@ -88,7 +88,7 @@
             background: #fcfdfd;
         }
 
-        /* Kaydırma çubuğunu (scrollbar) daha estetik ve fark edilir yapmak için */
+        /* Kaydırma çubuğunu daha estetik yapmak için */
         .popup-content::-webkit-scrollbar {
             width: 6px;
         }
@@ -110,21 +110,21 @@
             color: #2d3748;
             font-weight: 600;
             cursor: pointer;
-            opacity: 0.5; /* Metin bitene kadar sönük duracak */
-            pointer-events: none; /* Metin bitene kadar tıklanamaz */
+            opacity: 0.5; 
+            pointer-events: none; 
             transition: all 0.3s ease;
         }
 
         .checkbox-container.active {
             opacity: 1;
-            pointer-events: auto; /* Metin bitince tıklanabilir olacak */
+            pointer-events: auto; 
         }
 
         .checkbox-container input {
             width: 18px;
             height: 18px;
             margin-right: 10px;
-            margin-bottom: 0; /* Üstteki input stilinin marginini sıfırladık */
+            margin-bottom: 0; 
             cursor: pointer;
             min-height: auto;
         }
@@ -274,66 +274,38 @@
         <h2>BİLGİLENDİRME VE ONAY<br><span style="font-size: 11px; color:#a0aec0; font-weight:500;">INFORMATION AND CONSENT</span></h2>
         <hr style="border: 0; border-top: 1px solid #edf2f7; margin: 15px 0;">
         
-        <!-- İçeriği değiştirdiğiniz alan (Scroll bu kutuda dönecek) --> 
         <div id="scroll-box" class="popup-content">
-           
-<p style="color: #1a202c;"><strong>Değerli Öğrencimiz / Dear Student,</strong></p>
-<p style="color: #1a202c;">
-    <strong style="color: royalblue;">MATyer</strong> Sınav Yeri Sorgulama uygulamasını kullanmadan önce lütfen aşağıdaki bilgilendirmeyi okuyup onaylayınız:<br>
-    <span style="font-size: 13.5px; color: #718096; font-style: italic; display: block; margin-top: 4px;">
-        Please read and accept the following information before using the <strong style="color: royalblue;">MATyer</strong> Exam Location Inquiry application:
-    </span>
-</p>            
-  <ul style="color: #1a202c; padding-left: 20px; margin: 10px 0;">
-    <li style="margin-bottom: 12px;">
-        <strong style="color: royalblue;">Kitapçık türünü optik forma işaretlemeyen</strong> öğrencilerin sınav notu, OBS sistemine <strong style="color: royalblue;">SIFIR</strong> olarak girilecektir.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Students who do not mark their booklet type on the optical form will receive a grade of <strong style="color: royalblue;">ZERO</strong> on OBS.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        <strong style="color: royalblue;">İngilizce</strong> grupta olup da, <strong style="color: royalblue;">Türkçe grupta sınava girenlerin sınavları geçersiz</strong> sayılacaktır.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Exams of students registered in an <strong style="color: royalblue;">English</strong> section who take the exam in a <strong style="color: royalblue;">Turkish</strong> section will be deemed <strong style="color: royalblue;">invalid</strong>.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Optik formlarda <strong style="color: royalblue;">öğrenci numaraları sola yaslı olmalı</strong> ve son kutucuk eğer boş kalıyorsa boş bırakılmalıdır.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Student IDs must be <strong style="color: royalblue;">left-aligned</strong> on optical forms; if the last box remains empty, it should be left blank.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Derse ait <strong style="color: royalblue;">grup numarasının optik forma doğru işaretlenmesi</strong> gerekmektedir.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">The <strong style="color: royalblue;">section (group) number</strong> of the course must be correctly marked on the optical form.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Sınavda cep telefonları ve akıllı saatler kapalı konumda tutulacaktır.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Mobile phones and smartwatches must be switched off during the exam.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Sınav sırasında hesap makinesi kullanmak yasaktır.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Using a calculator during the exam is strictly prohibited.</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Yanlış cevapların doğru cevaplara etkisi olmayacaktır.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">Incorrect answers will not affect your correct answers (no negative marking).</span>
-    </li>
-
-    <li style="margin-bottom: 12px;">
-        Sınav saatinden en az 15 dakika önce sınav yerinizde hazır bulunmanız gerekmektedir.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;">You are required to be present at your exam location at least 15 minutes before the exam time.</span>
-    </li>
-
-<li style="margin-bottom: 12px;">
-        <strong style="color: royalblue;">Sınavınıza belirtilen derslikte girmeniz gerekmektedir</strong>.<br>
-        <span style="font-size: 12px; color: #718096; font-style: italic;"><strong style="color: royalblue;">You are required to take your exam in the specified exam hall</strong>.</span>
-    </li>
-
-</ul>
+            <p style="color: #1a202c;"><strong>Değerli Öğrencimiz / Dear Student,</strong></p>
+            <p style="color: #1a202c;">
+                <strong style="color: royalblue;">MATyer</strong> Sınav Yeri Sorgulama uygulamasını kullanmadan önce lütfen aşağıdaki bilgilendirmeyi okuyup onaylayınız:<br>
+                <span style="font-size: 13.5px; color: #718096; font-style: italic; display: block; margin-top: 4px;">
+                    Please read and accept the following information before using the <strong style="color: royalblue;">MATyer</strong> Exam Location Inquiry application:
+                </span>
+            </p>            
+            <ul style="color: #1a202c; padding-left: 20px; margin: 10px 0;">
+                <li style="margin-bottom: 12px;">
+                    <strong style="color: royalblue;">Kitapçık türünü optik forma işaretlemeyen</strong> öğrencilerin sınav notu, OBS sistemine <strong style="color: royalblue;">SIFIR</strong> olarak girilecektir.<br>
+                    <span style="font-size: 12px; color: #718096; font-style: italic;">Students who do not mark their booklet type on the optical form will receive a grade of <strong style="color: royalblue;">ZERO</strong> on OBS.</span>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong style="color: royalblue;">İngilizce</strong> grupta olup da, <strong style="color: royalblue;">Türkçe grupta sınava girenlerin sınavları geçersiz</strong> sayılacaktır.<br>
+                    <span style="font-size: 12px; color: #718096; font-style: italic;">Exams of students registered in an <strong style="color: royalblue;">English</strong> section who take the exam in a <strong style="color: royalblue;">Turkish</strong> section will be deemed <strong style="color: royalblue;">invalid</strong>.</span>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong style="color: royalblue;">Optik formlarda öğrenci numaraları sola yaslı olmalı</strong> ve son kutucuk eğer boş kalıyorsa boş bırakılmalıdır.<br>
+                    <span style="font-size: 12px; color: #718096; font-style: italic;">Student IDs must be <strong style="color: royalblue;">left-aligned</strong> on optical forms; if the last box remains empty, it should be left blank.</span>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong style="color: royalblue;">Derse ait grup numarasının optik forma doğru işaretlenmesi</strong> gerekmektedir.<br>
+                    <span style="font-size: 12px; color: #718096; font-style: italic;">The <strong style="color: royalblue;">section (group) number</strong> of the course must be correctly marked on the optical form.</span>
+                </li>
+                <li style="margin-bottom: 12px;">
+                    <strong style="color: royalblue;">Sınavınıza belirtilen derslikte girmeniz gerekmektedir</strong>.<br>
+                    <span style="font-size: 12px; color: #718096; font-style: italic;"><strong style="color: royalblue;">You are required to take your exam in the specified exam hall</strong>.</span>
+                </li>
+            </ul>
         </div>
         
-        <!-- Dinamik Checkbox Alanı -->
         <label id="check-label" class="checkbox-container">
             <input type="checkbox" id="chk-confirm" disabled>
             <span>Okudum, onaylıyorum. / I accept.</span>
@@ -350,14 +322,26 @@
         <img src="logo.png" alt="MATyer Logo" class="logo-png">
     </div>
     
+    <!-- YENİ: Sınav Türü Seçim Alanı -->
+    <label for="examTypeSelect">
+        SORGULANACAK SINAV TÜRÜ
+        <span class="en-label">SELECT EXAM TYPE</span>
+    </label>
+    <select id="examTypeSelect">
+        <option value="" disabled selected>Sınav türü seçiniz / Select exam type...</option>
+        <option value="arasinav1">1. Arasınav / 1st Midterm</option>
+        <option value="arasinav2">2. Arasınav / 2nd Midterm</option>
+        <option value="final">Final Sınavı / Final Exam</option>
+    </select>
+
     <label for="courseSelect">
         SINAVINA GİRECEĞİNİZ TEMEL DERS
         <span class="en-label">SELECT YOUR EXAM SUBJECT</span>
     </label>
     <select id="courseSelect">
         <option value="" disabled selected>Ders seçimi yapınız / Select course...</option>
-        <option value="matematik.csv">MAT1072 Matematik 2</option>
-        <option value="matyer1.csv">MAT1320 Lineer Cebir</option>        
+        <option value="matematik">MAT1072 Matematik 2</option>
+        <option value="lineer">MAT1320 Lineer Cebir</option>        
     </select>
 
     <label for="studentId">
@@ -380,9 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmCheckbox = document.getElementById("chk-confirm");
     const approveBtn = document.getElementById("btn-approve");
 
-    // Scroll Kontrol Fonksiyonu
     function checkScroll() {
-        // Eğer metin kutuya sığıyorsa ve scroll bar yoksa veya en aşağı inilmişse
         const scrollIhtiyaciVarMi = scrollBox.scrollHeight > scrollBox.clientHeight;
         const metinBittiMi = scrollBox.scrollHeight - scrollBox.scrollTop <= scrollBox.clientHeight + 10;
         
@@ -392,43 +374,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // İlk yüklemede taşma durumunu kontrol et
     setTimeout(checkScroll, 100);
-
-    // Kaydırdıkça tetiklenen olay
     scrollBox.addEventListener("scroll", checkScroll);
 
-    // Onay kutusu işaretlenme kontrolü
     confirmCheckbox.addEventListener("change", () => {
-        if (confirmCheckbox.checked) {
-            approveBtn.disabled = false;
-        } else {
-            approveBtn.disabled = true;
-        }
+        approveBtn.disabled = !confirmCheckbox.checked;
     });
 
-    // Giriş butonu tetikleyicisi
     approveBtn.addEventListener("click", () => {
         overlay.style.transition = "opacity 0.3s ease";
         overlay.style.opacity = "0";
         
         setTimeout(() => {
             overlay.style.display = "none";
-            container.style.display = "block"; // Hatalı olan .style.style satırı düzeltildi
+            container.style.display = "block"; 
         }, 300);
     });
 });
 
 function searchExam() {
+    const examSelect = document.getElementById('examTypeSelect');
     const courseSelect = document.getElementById('courseSelect');
-    const dersDosyasi = courseSelect.value;
+    
+    const examType = examSelect.value;
+    const dersKodu = courseSelect.value;
     const no = document.getElementById('studentId').value.trim();
     const sonucDiv = document.getElementById('result');
 
-    if (!dersDosyasi) { alert("Lütfen bir ders seçin / Please select a course"); return; }
+    if (!examType) { alert("Lütfen bir sınav türü seçin / Please select an exam type"); return; }
+    if (!dersKodu) { alert("Lütfen bir ders seçin / Please select a course"); return; }
     if (!no) { alert("Lütfen numaranızı girin / Please enter your student ID"); return; }
 
-    const dosyaYolu = dersDosyasi + "?v=" + new Date().getTime();
+    // Seçilen sınavın görünen adını metin olarak alıyoruz
+    const secilenSinavAdi = examSelect.options[examSelect.selectedIndex].text.split('/')[0].trim();
+
+    // Dosya adlandırma kuralı dinamikleşti: örn. matematik_arasinav1.csv
+    const dosyaYolu = `${dersKodu}_${examType}.csv?v=${new Date().getTime()}`;
 
     Papa.parse(dosyaYolu, {
         download: true,
@@ -485,6 +466,14 @@ function searchExam() {
             </div>
         </div>
 
+        <!-- YENİ: Sınav Adı Kutusu (Fakültenin hemen üstünde) -->
+        <div style="background: #f7fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 15px;">
+            <small style="color: #4a5568; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">SINAV / EXAM</small>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #4a5568; line-height: 1.3;">
+                ${secilenSinavAdi}
+            </div>
+        </div>
+
         <div style="background: #fff5f5; padding: 20px; border-radius: 12px; border: 2px solid #feb2b2;">
             <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: 0px; letter-spacing: 1px;">FAKÜLTE / FACULTY</small>                            
             <div style="font-size: 1rem; color: #4a5568; font-weight: 600; margin-bottom: 12px; line-height: 1.2;">${student.Fakulte || '-'}</div> 
@@ -504,11 +493,11 @@ function searchExam() {
 `;
             } else {
                 sonucDiv.className = "hata";
-                sonucDiv.innerHTML = `<strong>Kayıt bulunamadı. / Record not found.</strong><br>Lütfen numaranızı ve dersi kontrol ediniz.`;
+                sonucDiv.innerHTML = `<strong>Kayıt bulunamadı. / Record not found.</strong><br>Lütfen numaranızı ve dersi kontrol ediniz.<br><small style="color: #718096; display:block; margin-top:5px;">Seçilen Sınav: ${secilenSinavAdi}</small>`;
             }
         },
         error: function() {
-            alert("Dosya yüklenemedi / Failed to load file.");
+            alert("Dosya yüklenemedi. Bu sınav türü için henüz veriler sisteme yüklenmemiş olabilir. / Failed to load file.");
         }
     });
 }
