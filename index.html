@@ -479,14 +479,14 @@ function searchExam() {
     const no = noInput.value.trim();
     const sonucDiv = document.getElementById('result');
 
-    if (!examType) { alert("Lütfen bir sınav türü seçin \n\nPlease select an exam type"); return; }
-    if (!dersKodu) { alert("Lütfen bir ders seçin \n\nPlease select a course"); return; }
+    if (!examType) { alert("Lütfen bir sınav türü seçin. \n\nPlease select an exam type."); return; }
+    if (!dersKodu) { alert("Lütfen bir ders seçin. \n\nPlease select a course."); return; }
     
     // Genel liste modu kontrolü
     const isGeneralMode = (examType === "mazeret" || examType === "butunleme" || examType === "mezuniyet");
     
     if (!isGeneralMode && !no) { 
-        alert("Lütfen numaranızı girin \n\nPlease enter your student ID"); 
+        alert("Lütfen numaranızı girin. \n\nPlease enter your student ID."); 
         return; 
     }
 
