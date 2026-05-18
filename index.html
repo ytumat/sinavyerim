@@ -540,7 +540,7 @@ function searchExam() {
     const no = noInput.value.trim();
     const sonucDiv = document.getElementById('result');
 
-    if (!examType) { alert("Lütfen bir sınav türü seçin. \n\nPlease select an exam type."); return; }
+    if (!examType) { alert("Lütfen bir sınav seçin. \n\nPlease select an exam."); return; }
     if (examType === "butunleme" && !examLanguage) { alert("Lütfen bütünleme sınavı için grup dilini seçin. \n\nPlease select the exam group language for the resit exam."); return; }
     if (!dersKodu) { alert("Lütfen bir ders seçin. \n\nPlease select a course."); return; }
     
