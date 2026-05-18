@@ -219,6 +219,13 @@
             margin-bottom: 0px; /* Alttaki çakışmayı önlemek için sıfırlandı */
         }
 
+/* Dil alanı açıldığında select elemanının alt boşluğunu 
+   biraz kısarak genel dengeyi yakalıyoruz */
+#examLanguageGroup select {
+    margin-bottom: 10px; 
+}
+
+
         /* JS classList.add("gizli") dediğinde devreye girecek kurtarıcı CSS kuralları */
         .input-group-no.gizli, #examLanguageGroup.gizli {
             max-height: 0px !important;
