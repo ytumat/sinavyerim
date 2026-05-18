@@ -647,79 +647,70 @@ function searchExam() {
                 }
 
                 sonucDiv.innerHTML = `
-                    <div style="text-align: center; border-bottom: 1px solid #eee; padding: 20px 10px 10px 10px; margin-bottom: 20px;">
-                        <span style="font-size: 1.1rem; color: #2c3e50; font-weight: 600;">Sınav Salonu Bilgisi</span><br>
-                        <span style="font-size: 0.95rem; color: #a0aec0; font-weight: 600; font-style: italic;">Exam Hall Information</span>
-                    </div>
+        <div style="display: flex; justify-content: space-around; margin: 20px 20px 15px 20px; padding: 12px; background: #f8fafc; border-radius: 12px; border: 1px solid #edf2f7;">
+            <div>
+                <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold; letter-spacing: 0.5px;">TARİH / DATE</small>
+                <span style="font-weight: 700; color: #2d3748; font-size: 14px;">${sinavTarihi}</span>
+            </div>
+            <div style="border-left: 1px solid #e2e8f0;"></div>
+            <div>
+                <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold; letter-spacing: 0.5px;">SAAT / TIME</small>
+                <span style="font-weight: 700; color: #2d3748; font-size: 14px;">${sinavSaati}</span>
+            </div>
+        </div>
 
-                    <!-- DİNAMİK UYARI VE KATILIM KUTUSU -->
-                    <div style="margin: 0 20px 20px 20px; background: #fffaf0; border: 2px solid #feebc8; padding: 15px; border-radius: 12px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-                        <div style="color: #dd6b20; font-weight: 800; font-size: 12px; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase;">
-                            ⚠️ ÖNEMLİ BİLGİLENDİRME & KATILIM FORMU
-                        </div>
-                        
-                        <!-- Türkçe Bilgilendirme -->
-                        <div style="font-size: 13px; color: #2d3748; line-height: 1.5; margin-bottom: 12px;">
-                            ${uyariMetniTR}
-                        </div>
-                        
-                        <!-- İngilizce Bilgilendirme -->
-                        <div style="font-size: 12px; color: #718096; line-height: 1.4; font-style: italic; border-top: 1px dashed #fbd38d; padding-top: 10px; margin-bottom: 15px;">
-                            ${uyariMetniEN}
-                        </div>
-                        
-                        <!-- Dikkat Çeken Dinamik Buton -->
-                        <a href="${formLinki}" target="_blank" class="katilim-butonu" style="display: block; text-align: center; background: #dd6b20; color: white; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(221, 107, 32, 0.4); animation: pulseAnimation 2s infinite; transition: all 0.2s;">
-                            📝 FORMU DOLDUR / FILL OUT THE FORM
-                        </a>
-                    </div>
+        <div style="margin: 0 20px 20px 20px; text-align: center;">
+            
+            <div style="background: #ebf8ff; padding: 15px; border-radius: 12px; border: 2px solid #bee3f8; margin-bottom: 15px;">
+                <small style="color: #2b6cb0; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">DERS / COURSE</small>
+                <div style="font-size: 1.1rem; font-weight: 700; color: #2c5282; line-height: 1.3;">
+                    ${trDersAdi}
+                    ${enDersAdi ? `<br><span style="font-size: 0.95rem; color: #718096; font-weight: 600; font-style: italic;">${enDersAdi}</span>` : ''}
+                </div>
+            </div>
 
-                    <div style="display: flex; justify-content: space-around; margin: 0 20px 20px 20px; padding: 10px; background: #f8fafc; border-radius: 8px;">
-                        <div>
-                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">TARİH / DATE</small>
-                            <span style="font-weight: 600; color: #2d3748;">${sinavTarihi}</span>
-                        </div>
-                        <div style="border-left: 1px solid #e2e8f0;"></div>
-                        <div>
-                            <small style="color: #7f8c8d; display: block; font-size: 10px; font-weight: bold;">SAAT / TIME</small>
-                            <span style="font-weight: 600; color: #2d3748;">${sinavSaati}</span>
-                        </div>
-                    </div>
+            <div style="background: #f7fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 15px;">
+                <small style="color: #4a5568; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">SINAV / EXAM</small>
+                <div style="font-size: 1.1rem; font-weight: 700; color: #4a5568; line-height: 1.3;">
+                    ${trSinavAdi}
+                    ${enSinavAdi ? `<br><span style="font-size: 0.95rem; color: #a0aec0; font-weight: 600; font-style: italic;">${enSinavAdi}</span>` : ''}
+                </div>
+            </div>
 
-                    <div style="margin: 0 20px 20px 20px; text-align: center;">
-                        
-                        <div style="background: #ebf8ff; padding: 15px; border-radius: 12px; border: 2px solid #bee3f8; margin-bottom: 15px;">
-                            <small style="color: #2b6cb0; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">DERS / COURSE</small>
-                            <div style="font-size: 1.1rem; font-weight: 700; color: #2c5282; line-height: 1.3;">
-                                ${trDersAdi}
-                                ${enDersAdi ? `<br><span style="font-size: 0.95rem; color: #718096; font-weight: 600; font-style: italic;">${enDersAdi}</span>` : ''}
-                            </div>
-                        </div>
+            <div style="background: #fff5f5; padding: 15px 20px 20px 20px; border-radius: 12px; border: 2px solid #feb2b2; margin-bottom: 20px;">
+                <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px;">SINAV SALONLARI / EXAM HALLS</small>
+                ${salonlarHTML}
+            </div>
+        </div>
 
-                        <div style="background: #f7fafc; padding: 12px; border-radius: 12px; border: 2px solid #e2e8f0; margin-bottom: 15px;">
-                            <small style="color: #4a5568; display: block; font-size: 11px; font-weight: 800; margin-bottom: 5px; letter-spacing: 1px;">SINAV / EXAM</small>
-                            <div style="font-size: 1.1rem; font-weight: 700; color: #4a5568; line-height: 1.3;">
-                                ${trSinavAdi}
-                                ${enSinavAdi ? `<br><span style="font-size: 0.95rem; color: #a0aec0; font-weight: 600; font-style: italic;">${enSinavAdi}</span>` : ''}
-                            </div>
-                        </div>
+        <div style="margin: 0 20px 20px 20px; background: #fffaf0; border: 2px solid #feebc8; padding: 15px; border-radius: 12px; text-align: left; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="color: #dd6b20; font-weight: 800; font-size: 12px; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase;">
+                ⚠️ ÖNEMLİ BİLGİLENDİRME & KATILIM FORMU
+            </div>
+            
+            <div style="font-size: 13px; color: #2d3748; line-height: 1.5; margin-bottom: 12px;">
+                ${uyariMetniTR}
+            </div>
+            
+            <div style="font-size: 12px; color: #718096; line-height: 1.4; font-style: italic; border-top: 1px dashed #fbd38d; padding-top: 10px; margin-bottom: 15px;">
+                ${uyariMetniEN}
+            </div>
+            
+            <a href="${formLinki}" target="_blank" class="katilim-butonu" style="display: block; text-align: center; background: #dd6b20; color: white; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 800; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(221, 107, 32, 0.4); animation: pulseAnimation 2s infinite; transition: all 0.2s;">
+                📝 FORMU DOLDUR / FILL OUT THE FORM
+            </a>
+        </div>
 
-                        <div style="background: #fff5f5; padding: 15px 20px 20px 20px; border-radius: 12px; border: 2px solid #feb2b2; text-align:center;">
-                            <small style="color: #e53e3e; display: block; font-size: 11px; font-weight: 800; margin-bottom: 10px; letter-spacing: 1px;">SINAV SALONLARI / EXAM HALLS</small>
-                            ${salonlarHTML}
-                        </div>
-                    </div>
-
-                    <div style="border-top: 1px solid #edf2f7; padding: 15px 20px; color: #4a5568; font-size: 13px; line-height: 1.6;">
-                        <div style="padding: 12px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f6ad55;">
-                            <p style="margin: 0; font-weight: 600; color: #7b341e;">NOT / NOTE:</p>
-                            <p style="margin: 4px 0 0 0;">Bu sınav için kişiye özel salon atanmamıştır. Yukarıda ilan edilen dersliklerdeki boş sıralara yerleşebilirsiniz.</p>
-                            <p style="margin: 4px 0 0 0; color: #718096; font-style: italic; font-size: 12px;">No specific hall has been assigned for this exam. You can take any empty seat in the halls listed above.</p>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
+        <div style="border-top: 1px solid #edf2f7; padding: 15px 20px; color: #4a5568; font-size: 13px; line-height: 1.6;">
+            <div style="padding: 12px; background: #fffaf0; border-radius: 8px; border-left: 4px solid #f6ad55;">
+                <p style="margin: 0; font-weight: 600; color: #7b341e;">NOT / NOTE:</p>
+                <p style="margin: 4px 0 0 0;">Bu sınav için kişiye özel salon atanmamıştır. Yukarıda ilan edilen dersliklerdeki boş sıralara yerleşebilirsiniz.</p>
+                <p style="margin: 4px 0 0 0; color: #718096; font-style: italic; font-size: 12px;">No specific hall has been assigned for this exam. You can take any empty seat in the halls listed above.</p>
+            </div>
+        </div>
+    `;
+    return;
+}
 
             // --- MOD 2: BİREYSEL SORGULAMA MODU (Arasınavlar ve Final) ---
             const student = temizListe.find(o => String(o.No).trim() === no);
