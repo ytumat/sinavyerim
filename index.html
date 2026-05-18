@@ -446,6 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const studentIdGroup = document.getElementById("studentIdGroup");
     const examLanguageGroup = document.getElementById("examLanguageGroup");
 
+    
     // Sınav türü değişim kontrolü
     examSelect.addEventListener("change", () => {
         const val = examSelect.value;
@@ -457,12 +458,12 @@ document.addEventListener("DOMContentLoaded", () => {
             studentIdGroup.classList.remove("gizli");
         }
 
-        // Bütünleme seçildiyse dil seçeneğini göster, yoksa gizle
+        // Bütünleme seçildiyse görünür yap, yoksa gizle (Sadece sınıf yönetimi)
         if(val === "butunleme") {
             examLanguageGroup.classList.remove("gizli");
         } else {
             examLanguageGroup.classList.add("gizli");
-            document.getElementById("examLanguageSelect").value = ""; // Reset
+            document.getElementById("examLanguageSelect").value = ""; // Seçimi sıfırla
         }
     });
 
