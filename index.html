@@ -395,18 +395,18 @@
         <option value="mezuniyet">Mezuniyet Sınavı / Graduation Exam</option>
     </select>
 
-    <!-- Bütünleme için Sınav Dili Seçim Alanı (Başlangıçta Gizli) -->
-    <div id="examLanguageGroup" class="gizli" style="margin-bottom: 15px;">
-        <label for="examLanguageSelect">
-            SINAV GRUP DİLİ
-            <span class="en-label">SELECT EXAM LANGUAGE GROUP</span>
-        </label>
-        <select id="examLanguageSelect">
-            <option value="" disabled selected>Sınav grubunun dilini seçiniz / Select language...</option>
-            <option value="tr">Türkçe Grup / Turkish Section</option>
-            <option value="en">İngilizce Grup / English Section</option>
-        </select>
-    </div>
+    <!-- Bütünleme için Sınav Dili Seçim Alanı (Başlangıçta Kesin Gizli) -->
+<div id="examLanguageGroup" class="gizli" style="display: none; margin-bottom: 15px;">
+    <label for="examLanguageSelect">
+        SINAV GRUP DİLİ
+        <span class="en-label">SELECT EXAM LANGUAGE GROUP</span>
+    </label>
+    <select id="examLanguageSelect">
+        <option value="" disabled selected>Sınav grubunun dilini seçiniz / Select language...</option>
+        <option value="tr">Türkçe Grup / Turkish Section</option>
+        <option value="en">İngilizce Grup / English Section</option>
+    </select>
+</div>
 
     <label for="courseSelect">
         SINAVINA GİRECEĞİNİZ TEMEL DERS
