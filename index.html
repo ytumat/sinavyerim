@@ -17,6 +17,11 @@
     <title>Sınav Yeri Sorgulama | Exam Location Inquiry</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
    <style>
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             display: flex; 
@@ -54,15 +59,15 @@
         }
 
         .popup-box {
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 16px;
-            width: 85%;
-            max-width: 420px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: left;
-            animation: slideUp 0.4s ease-out;
-        }
+    background: #ffffff;
+    padding: 25px; /* 30px'den 25px'e çekerek iç boşluğu mobilde rahatlattık */
+    width: 90%; /* Genişliği esnettik */
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    text-align: left;
+    animation: slideUp 0.4s ease-out;
+    box-sizing: border-box; /* Taşmayı kesin engeller */
+}
 
         .popup-box h2 {
             margin-top: 0;
@@ -102,17 +107,18 @@
 
         /* Onay Kutusu (Checkbox) Alanı */
         .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin: 15px 4px;
-            font-size: 13px;
-            color: #2d3748;
-            font-weight: 600;
-            cursor: pointer;
-            opacity: 0.5; 
-            pointer-events: none; 
-            transition: all 0.3s ease;
-        }
+    display: flex;
+    align-items: center;
+    margin: 15px 0; /* Yanlardaki 4px'lik boşluğu 0 yaptık ki dışarı taşmasın */
+    font-size: 13px;
+    color: #2d3748;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.5; 
+    pointer-events: none; 
+    transition: all 0.3s ease;
+    width: 100%; /* Genişliği sabitledik */
+}
 
         .checkbox-container.active {
             opacity: 1;
